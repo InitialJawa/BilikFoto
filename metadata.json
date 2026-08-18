@@ -1,0 +1,6 @@
+{
+  "name": "BilikFoto - Studio Photobooth Strip Online",
+  "description": "Studio photobooth digital estetik ala Korea dan vintage dengan kustomisasi strip, filter retro, stiker gemes, teks kustom, dan download instan kualitas HD.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
