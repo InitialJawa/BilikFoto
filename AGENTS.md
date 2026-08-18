@@ -1,102 +1,99 @@
 # AGENTS.md — BilikFoto
 
-## MANDAT WAJIB SEBELUM AKSI
+## Wajib Baca Dulu
 
-**Baca `graphify-out/GRAPH_REPORT.md` SEBELUM melakukan apa pun.**
-Graph ini adalah peta arsitektur project. Tanpa membacanya, kamu akan:
-- Menghabiskan token tanpa konteks
-- Membuat duplicate code yang sudah ada
-- Melanggar pola yang sudah mapan
+**Baca `graphify-out/GRAPH_REPORT.md` sebelum ngapa-ngapain.**
 
-## Workflow Wajib
+Graph ini peta arsitektur project. Tanpa baca ini:
+- Habis token buat eksplorasi manual
+- Bikin code duplicate yang udah ada
+- Melanggar pola project
 
-### 1. Sebelum Membaca/Mengedit Kode
+## Workflow
 
+### Sebelum Baca/Edit Code
 ```bash
-# Baca graph report (WAJIB)
 cat graphify-out/GRAPH_REPORT.md
-
-# Atau query spesifik
+# atau query spesifik
 graphify query "apa fungsi X?"
 graphify query "apa yang memanggil Y?"
 ```
 
-### 2. Sebelum Menambah Fitur
+### Sebelum Tambah Fitur
+1. Baca GRAPH_REPORT.md → cari komunitas/node terkait
+2. `graphify query` → pahami dependensi
+3. Ikuti pola di komunitas yang sama
+4. Selesai → update graph (lihat bawah)
 
-1. Baca GRAPH_REPORT.md → cari node/komunitas terkait
-2. Query graph → pahami dependensi yang terpengaruh
-3. Ikuti pola yang ada di komunitas yang sama
-4. Setelah selesai → update graph (lihat bawah)
+### Sebelum Fix Bug
+1. `graphify query "apa yang terhubung ke [komponen bermasalah]?"`
+2. Baca file yang ditunjuk graph
+3. Fix pakai pola existing
 
-### 3. Sebelum Fix Bug
-
-1. Query graph → "apa yang terhubung ke [komponen bermasalah]?"
-2. Baca source file yang ditunjuk graph
-3. Fix sesuai pola yang ada
-
-### 4. Setelah Setiap Perubahan
-
+### Setelah Perubahan Signifikan
 ```bash
-# Update graph secara incremental
-graphify . --update
-
-# Atau rebuild penuh kalau perubahan besar
-graphify .
+graphify . --update    # incremental (file yang berubah)
+graphify .             # full rebuild
 ```
 
-## Struktur Komunitas
+---
 
-| ID | Nama | Isi |
-|----|------|-----|
-| 0 | Package Config | dependencies, scripts, package.json |
+## Ringkas Arsitektur (dari graphify)
+
+**17 Komunitas:**
+
+| ID | Nama | Isi Utama |
+|----|------|-----------|
+| 0 | Package Config | deps, scripts, package.json |
 | 1 | Layout & Canvas Rendering | ChooseLayout, ExportModal, PhotoStripCanvas, types |
 | 2 | Camera & Audio | CameraBooth, Header, audio utils, App |
 | 3 | Customizer & Presets | CustomizerSidebar, presets, stickers |
 | 4 | TypeScript Config | tsconfig, compilerOptions |
 | 5 | Pattern & Drawing Utils | patterns, canvas drawing functions |
-| 6 | Dev Dependencies | devDependencies, tooling |
+| 6 | Dev Dependencies | devDeps, tooling |
 | 7 | Entry Point & HTML | index.html, main.tsx, fonts |
 | 8 | Project Metadata | metadata.json |
 | 9 | OpenCode Plugin | .opencode config |
 | 10 | Project Docs | project.md |
 | 11 | Replace Script | replace.py |
 | 12 | Vite Config | vite.config.ts |
+| 13-16 | (SEO baru) | SEOContent, prerender, og-image, plan docs |
 
-## Node Kunci
+**Node Kunci (hubungi ini dulu):**
+- `CustomizationSettings` (deg 14) — state sentral kustomisasi
+- `PhotoItem` (deg 13) — representasi foto
+- `FilterType` (deg 5) — 10 filter visual
+- `renderPhotoboothToCanvas()` (deg 5) — core rendering engine
 
-- **`CustomizationSettings`** (degree 14) — State sentral, hubungi ini dulu kalau ada hubungan dengan kustomisasi
-- **`PhotoItem`** (degree 13) — Representasi foto, selalu ada di tiap komponen
-- **`FilterType`** (degree 5) — 10 filter visual, dipakai di CameraBooth & canvasRenderer
-- **`renderPhotoboothToCanvas()`** (degree 5) — Core rendering engine
+---
 
-## Aturan Kode
+## Aturan Code
 
-- **Bahasa**: Indonesia untuk semua komentar, docs, commit message
-- **State**: `CustomizationSettings` adalah source of truth untuk semua kustomisasi
-- **Komponen**: Functional components + hooks, tidak ada class component
-- **Styling**: Tailwind CSS, tidak ada inline style kecuali dynamic
-- **Export**: Selalu named export, kecuali App.tsx (default export)
+- **Bahasa**: Indonesia (komentar, docs, commit message)
+- **State**: `CustomizationSettings` = source of truth
+- **Komponen**: Functional + hooks only, no class component
+- **Styling**: Tailwind CSS, inline style hanya untuk dynamic values
+- **Export**: Named export, kecuali `App.tsx` (default)
+
+---
 
 ## Token Efficiency
 
-- **JANGAN** baca semua file secara manual → pakai graph query
-- **JANGAN** explore codebase tanpa konteks → baca GRAPH_REPORT.md dulu
-- **JANGAN** re-implement sesuatu yang sudah ada → cek graph dulu
-- **PAKAI** `graphify query` untuk pertanyaan arsitektur
-- **PAKAI** `graphify path "A" "B"` untuk trace dependensi
-- **PAKAI** `graphify explain "NodeName"` untuk penjelasan node
+- **Jangan** baca file manual → pakai `graphify query`
+- **Jangan** explore tanpa konteks → baca GRAPH_REPORT.md dulu
+- **Jangan** re-implement → cek graph dulu
+- **Pakai** `graphify query` untuk pertanyaan arsitektur
+- **Pakai** `graphify path "A" "B"` untuk trace dependensi
+- **Pakai** `graphify explain "NodeName"` untuk penjelasan node
+
+---
 
 ## Update Graph
 
 ```bash
-# Incremental (hanya file yang berubah)
-graphify . --update
-
-# Full rebuild
-graphify .
-
-# Cluster only (kalau ingin re-cluster tanpa re-extract)
-graphify . --cluster-only
+graphify . --update      # incremental (default)
+graphify .               # full rebuild
+graphify . --cluster-only # re-cluster tanpa re-extract
 ```
 
-Graph harus di-update SETIAP kali ada perubahan kode signifikan (fitur baru, refactor, bug fix besar).
+Update graph **wajib** setelah: fitur baru, refactor, bug fix besar.

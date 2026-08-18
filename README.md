@@ -1,120 +1,123 @@
-<div align="center">
-
 # BilikFoto
 
-**Studio Photobooth Strip Online & Kustomisasi**
+Studio photobooth strip online — gratis, jalan di browser, 100% privat.
 
-Aplikasi web photobooth digital estetik ala Korea & vintage dengan kustomisasi strip, filter retro, stiker, teks kustom, dan download instan kualitas HD.
+## Fitur Utama
 
-[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript)](https://www.typescriptlang.org)
-[![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite)](https://vitejs.dev)
-[![Tailwind](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss)](https://tailwindcss.com)
+**Layout & Template**
+- 10 template: Strip klasik 4/3/2, Grid 2×2 & 2×3, Polaroid single/duo, Film 35mm, Heart duo, Editorial magazine
+- 56 bingkai warna: pastel solid, plaid/tartan, checkerboard, gingham, animal print, floral, marble, metallic foil, holographic
+- 10 filter: Normal, Noir B&W, Vintage 90s, Golden Hour, Cyber Y2K, Film 35mm, Soft Blush Korea, Muted Fade, Sepia, Vignette
+- 50+ stiker: emoji, badge text Indo/Korea/Y2K/Vintage, koleksi viral photobooth
 
-</div>
+**Kamera & Capture**
+- Webcam langsung (depan/belakang) + countdown 3-2-1 + shutter sound
+- Upload dari galeri HP/laptop
+- Sample foto aesthetic biar bisa coba langsung tanpa kamera
 
----
+**Kustomisasi**
+- Sidebar tab: Bingkai, Filter, Stiker, Teks, Doodle
+- Font: Plus Jakarta Sans (clean), Caveat (handwriting), VT323 (retro pixel)
+- Drawing tool: warna, ketebalan, undo/redo
+- Frame texture: paper, grain, linen, glitter, dots, diagonal
 
-## Fitur
+**Ekspor**
+- PNG HD 300 DPI (siap cetak)
+- JPEG, copy ke clipboard, cetak langsung
+- Motion Strip → animasi WebM
+- Logo bahasa: ENG / KOR / CN / IDN
 
-- **10+ Layout** — Strip 4/3/2, Grid 2x2/2x3, Polaroid, Film 35mm, Heart, Editorial
-- **10 Filter Retro** — B&W Noir, Vintage 90s, Golden Hour, Cyber Y2K, Film 35mm, Soft Blush, dll
-- **Kamera Langsung** — Webcam capture dengan countdown & shutter sound
-- **Stiker & Doodle** — Koleksi stiker SVG/emoji + drawing tool interaktif
-- **Teks Kustom** — Font opsional (Plus Jakarta Sans, Caveat, VT323), warna, posisi
-- **Ekspor HD** — Download strip sebagai PNG kualitas tinggi atau GIF animated
-- **Audio Feedback** — Click, countdown beep, sticker pop, success chime
-- **Multi Bahasa Logo** — ENG, KOR, CN, IDN
-- **Frame Texture** — Paper, grain, linen, glitter, dots, diagonal
+**Privasi**
+- Semua proses di browser, **tidak ada upload ke server manapun**
+- Foto tidak pernah keluar dari device
 
 ## Tech Stack
 
-| Layer | Teknologi |
-|-------|-----------|
-| UI | React 19 + TypeScript |
-| Styling | Tailwind CSS 4 |
-| Build | Vite 6 |
-| Animasi | Motion (Framer Motion) |
-| Canvas | HTML5 Canvas API |
-| AI | Google Gemini API |
-| Icons | Lucide React |
+```
+React 19 + TypeScript
+Vite 6
+Tailwind CSS 4
+Motion (Framer Motion)
+HTML5 Canvas API
+Lucide React (icons)
+Google Gemini API (opsional, untuk AI features)
+```
 
-## Getting Started
+## Quick Start
 
 ```bash
-# Clone
-git clone <repo-url>
+git clone https://github.com/InitialJawa/BilikFoto.git
 cd BilikFoto
-
-# Install
 npm install
-
-# Jalankan
 npm run dev
 ```
 
-Buka `http://localhost:3000` di browser.
+Buka http://localhost:3000
 
-## Environment Variables
+## Scripts
+
+| Command | Apa yang dilakukan |
+|---------|-------------------|
+| `npm run dev` | Dev server port 3000 |
+| `npm run build` | Build production ke `dist/` |
+| `npm run build:seo` | Build + prerender untuk SEO (Playwright) |
+| `npm run preview` | Preview hasil build |
+| `npm run lint` | TypeScript check (`tsc --noEmit`) |
+| `npm run clean` | Hapus `dist/` dan `server.js` |
+
+## Environment
 
 ```bash
-# .env
-GEMINI_API_KEY=your_gemini_api_key    # Untuk fitur AI (opsional)
-APP_URL=http://localhost:3000          # URL aplikasi
+# .env (opsional)
+GEMINI_API_KEY=xxx    # Kalau mau fitur AI
+APP_URL=http://localhost:3000
 ```
 
-## Perintah
-
-| Command | Deskripsi |
-|---------|-----------|
-| `npm run dev` | Jalankan dev server (port 3000) |
-| `npm run build` | Build untuk produksi |
-| `npm run preview` | Preview build hasil |
-| `npm run lint` | Type check dengan TypeScript |
-| `npm run clean` | Hapus dist & server.js |
-
-## Arsitektur
+## Struktur Project
 
 ```
 src/
-├── App.tsx                    # Root component, state management
-├── main.tsx                   # Entry point
-├── types.ts                   # TypeScript interfaces & types
+├── App.tsx                 # Root, state management, step navigation
+├── main.tsx                # Entry point
+├── types.ts                # Semua type: LayoutType, FilterType, PhotoItem, CustomizationSettings, dll
 ├── components/
-│   ├── Header.tsx             # Top bar + navigation
-│   ├── ChooseLayout.tsx       # Layout selection grid
-│   ├── CameraBooth.tsx        # Webcam capture + countdown
-│   ├── CustomizerSidebar.tsx  # Sidebar kustomisasi (tabs)
+│   ├── Header.tsx          # Top bar + nav step
+│   ├── ChooseLayout.tsx    # Grid pilih template
+│   ├── CameraBooth.tsx     # Webcam capture + countdown
+│   ├── CustomizerSidebar.tsx  # Sidebar kustomisasi (5 tab)
 │   ├── PhotoStripCanvas.tsx   # Canvas rendering + interactive tools
-│   └── ExportModal.tsx        # Download/export dialog
+│   └── ExportModal.tsx     # Dialog download/print
 ├── utils/
-│   ├── audio.ts               # Sound effects (click, beep, pop, chime)
-│   ├── canvasRenderer.ts      # Core canvas drawing engine
-│   └── gifEncoder.ts          # Animated GIF generation
+│   ├── audio.ts            # Sound effects (click, beep, pop, chime)
+│   ├── canvasRenderer.ts   # Core drawing engine (renderPhotoboothToCanvas)
+│   └── gifEncoder.ts       # Animated GIF / WebM generation
 └── data/
-    ├── presets.ts             # Layout catalog, font options, defaults
-    ├── presetStickers.ts      # Stiker collection & categories
-    └── patterns.ts            # Procedural pattern generation
+    ├── presets.ts          # Layout catalog, font options, default settings
+    ├── presetStickers.ts   # Koleksi stiker & kategori
+    └── patterns.ts         # Procedural pattern generation
 ```
 
-### Alur Aplikasi
+## Alur User
 
 ```
-Layout Selection → Camera Booth → Customizer Sidebar → Canvas Preview → Export
-       ↓                ↓               ↓                    ↓            ↓
-  ChooseLayout    CameraBooth    CustomizerSidebar    PhotoStripCanvas  ExportModal
+Pilih Layout → Ambil Foto → Kustomisasi → Preview Canvas → Ekspor
+     ↓              ↓            ↓              ↓            ↓
+ ChooseLayout  CameraBooth  CustomizerSidebar  PhotoStripCanvas  ExportModal
 ```
 
-### Core Abstractions
+State sentral: `CustomizationSettings` (types.ts) — single source of truth untuk semua kustomisasi.
 
-| Node | Degree | Fungsi |
-|------|--------|--------|
-| `CustomizationSettings` | 14 | State sentral — semua kustomisasi |
-| `PhotoItem` | 13 | Representasi foto di strip |
-| `compilerOptions` | 15 | TypeScript config (build) |
-| `FilterType` | 5 | 10 filter visual |
-| `renderPhotoboothToCanvas()` | 5 | Render strip ke canvas |
+## SEO & AEO
 
-## License
+Project sudah include:
+- Meta tags lengkap (Open Graph, Twitter Card, canonical)
+- JSON-LD structured data: SoftwareApplication, FAQPage, WebSite
+- Prerendering via Playwright (`npm run build:seo`)
+- `robots.txt` & `sitemap.xml` di `public/`
+- SEO content component (hidden untuk user, visible untuk crawler)
 
-Private — All rights reserved.
+Deploy ke Vercel → `git push` ke branch connected.
+
+---
+
+**Private project** — All rights reserved.
