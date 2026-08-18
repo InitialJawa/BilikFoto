@@ -1,0 +1,127 @@
+{
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\.opencode\\package.json": {
+    "mtime": 1787048479.2667155,
+    "ast_hash": "c590fb88b7dbde70cfc9858bf8259b50",
+    "semantic_hash": "c590fb88b7dbde70cfc9858bf8259b50"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\metadata.json": {
+    "mtime": 1787041293.5785995,
+    "ast_hash": "8b34c556554f3f8ba2236b8309751ff2",
+    "semantic_hash": "8b34c556554f3f8ba2236b8309751ff2"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\package.json": {
+    "mtime": 1787041293.579111,
+    "ast_hash": "1ba047ca5eb721c01f6f7d39fda5bb7c",
+    "semantic_hash": "1ba047ca5eb721c01f6f7d39fda5bb7c"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\replace.py": {
+    "mtime": 1787047978.783209,
+    "ast_hash": "31232c6aca613dede12388a38a45e3cb",
+    "semantic_hash": "31232c6aca613dede12388a38a45e3cb"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\src\\App.tsx": {
+    "mtime": 1787047981.1939168,
+    "ast_hash": "bf7809caa2d567c1a15e825211202eab",
+    "semantic_hash": "bf7809caa2d567c1a15e825211202eab"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\src\\components\\CameraBooth.tsx": {
+    "mtime": 1787047981.1949215,
+    "ast_hash": "2cc56b5dfc9a86699ae47ac8b7b7be69",
+    "semantic_hash": "2cc56b5dfc9a86699ae47ac8b7b7be69"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\src\\components\\ChooseLayout.tsx": {
+    "mtime": 1787048010.5360055,
+    "ast_hash": "503ff9b1a5af09294d1df6b3d67f8be7",
+    "semantic_hash": "503ff9b1a5af09294d1df6b3d67f8be7"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\src\\components\\CustomizerSidebar.tsx": {
+    "mtime": 1787047981.197134,
+    "ast_hash": "08115c4af0c2d597879c9358a4b2064a",
+    "semantic_hash": "08115c4af0c2d597879c9358a4b2064a"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\src\\components\\ExportModal.tsx": {
+    "mtime": 1787047981.198172,
+    "ast_hash": "914b4f69a3275a3c1f9cd87eb68102e7",
+    "semantic_hash": "914b4f69a3275a3c1f9cd87eb68102e7"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\src\\components\\Header.tsx": {
+    "mtime": 1787045562.6378038,
+    "ast_hash": "43096aa6b8d24cd226a60540d7a9c340",
+    "semantic_hash": "43096aa6b8d24cd226a60540d7a9c340"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\src\\components\\PhotoStripCanvas.tsx": {
+    "mtime": 1787047981.198681,
+    "ast_hash": "5977580ba536e970394f822f348ebdd4",
+    "semantic_hash": "5977580ba536e970394f822f348ebdd4"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\src\\data\\patterns.ts": {
+    "mtime": 1787041293.5811658,
+    "ast_hash": "bc9bcf4441b4328e5112a06321c330b6",
+    "semantic_hash": "bc9bcf4441b4328e5112a06321c330b6"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\src\\data\\presetStickers.ts": {
+    "mtime": 1787041293.581681,
+    "ast_hash": "332b03606cbf85c2a03b4ea9c26a1994",
+    "semantic_hash": "332b03606cbf85c2a03b4ea9c26a1994"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\src\\data\\presets.ts": {
+    "mtime": 1787047981.199732,
+    "ast_hash": "a41cd0f26fd87dc0d9dfa1e18706b461",
+    "semantic_hash": "a41cd0f26fd87dc0d9dfa1e18706b461"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\src\\main.tsx": {
+    "mtime": 1787041293.581681,
+    "ast_hash": "a0bcc3ffa5e95e1965f94969ab488283",
+    "semantic_hash": "a0bcc3ffa5e95e1965f94969ab488283"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\src\\types.ts": {
+    "mtime": 1787041293.5821936,
+    "ast_hash": "8f711fc188d6ee7be2ea546cfcdab3b0",
+    "semantic_hash": "8f711fc188d6ee7be2ea546cfcdab3b0"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\src\\utils\\audio.ts": {
+    "mtime": 1787041293.5821936,
+    "ast_hash": "5badbb38e3c5eda9b8657f79791c5a28",
+    "semantic_hash": "5badbb38e3c5eda9b8657f79791c5a28"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\src\\utils\\canvasRenderer.ts": {
+    "mtime": 1787041293.5827093,
+    "ast_hash": "6375898db018bd721d393df098bfc797",
+    "semantic_hash": "6375898db018bd721d393df098bfc797"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\src\\utils\\gifEncoder.ts": {
+    "mtime": 1787041293.5827093,
+    "ast_hash": "77965e06f202467705e476b8749e427d",
+    "semantic_hash": "77965e06f202467705e476b8749e427d"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\tsconfig.json": {
+    "mtime": 1787041293.5827093,
+    "ast_hash": "aca6cdac13db39d03d9b95866834d84f",
+    "semantic_hash": "aca6cdac13db39d03d9b95866834d84f"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\vite.config.ts": {
+    "mtime": 1787041293.5827093,
+    "ast_hash": "cfc596836379397756c305b60b69ba06",
+    "semantic_hash": "cfc596836379397756c305b60b69ba06"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\.opencode\\memory\\project.md": {
+    "mtime": 1787041325.762632,
+    "ast_hash": "bc064defc4070338e269c66c654bbba2",
+    "semantic_hash": "bc064defc4070338e269c66c654bbba2"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\index.html": {
+    "mtime": 1787042660.6779766,
+    "ast_hash": "ecd209de0547a66fca47865ecfc5542c",
+    "semantic_hash": "ecd209de0547a66fca47865ecfc5542c"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\public\\favicon.svg": {
+    "mtime": 1787047711.3508024,
+    "ast_hash": "69558ac4a423af5332d0fbd072e7452c",
+    "semantic_hash": "69558ac4a423af5332d0fbd072e7452c"
+  },
+  "D:\\ALL IN ONE\\CODE\\BilikFoto\\public\\logo.svg": {
+    "mtime": 1787047697.995817,
+    "ast_hash": "69558ac4a423af5332d0fbd072e7452c",
+    "semantic_hash": "69558ac4a423af5332d0fbd072e7452c"
+  }
+}
