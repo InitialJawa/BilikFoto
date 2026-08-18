@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#090A0C" />
+  
+  <g transform="translate(68, 158)" fill="#FFFFFF">
+    <!-- Camera Body (F, Bridge, T, Shutter) -->
+    <path d="M 0,150 V 20 H 190 V 4 H 218 V 20 H 265 V 40 H 240 V 150 H 220 V 40 H 20 V 150 Z" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" />
+    
+    <!-- F mid bar -->
+    <rect x="20" y="85" width="40" height="20" />
+    
+    <!-- First O (Camera Lens) -->
+    <path d="M 120,50 A 45,45 0 1,0 120,140 A 45,45 0 1,0 120,50 Z M 120,70 A 25,25 0 1,1 120,120 A 25,25 0 1,1 120,70 Z" />
+    <!-- Lens reflection -->
+    <circle cx="106" cy="84" r="6" fill="#FFFFFF" />
+    
+    <!-- Second O -->
+    <path d="M 330,50 A 45,45 0 1,0 330,140 A 45,45 0 1,0 330,50 Z M 330,70 A 25,25 0 1,1 330,120 A 25,25 0 1,1 330,70 Z" />
+
+    <!-- Cute Flash / Sparkle -->
+    <path d="M 235,-15 L 250,-15 L 240,0 L 255,0 L 230,25 L 235,5 Z" fill="#F43F5E" />
+
+    <!-- BILIK text -->
+    <text x="375" y="195" text-anchor="end" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="34" letter-spacing="6" fill="#F43F5E">BILIK</text>
+  </g>
+</svg>

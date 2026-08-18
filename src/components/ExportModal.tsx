@@ -4,7 +4,7 @@ import {
   Printer, 
   Copy, 
   Share2, 
-  Sparkles, 
+  CheckCircle2, 
   Film, 
   Check, 
   Scissors, 
@@ -140,7 +140,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({
 
         <div className="flex items-center gap-2">
           <span className="px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-semibold rounded-full flex items-center gap-1.5 whitespace-nowrap">
-            <Sparkles className="w-3.5 h-3.5 shrink-0" />
+            <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
             <span>Siap Cetak HD 300DPI</span>
           </span>
         </div>

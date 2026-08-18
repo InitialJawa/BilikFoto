@@ -20,93 +20,29 @@ export const Header: React.FC<HeaderProps> = ({
   onLoadSamples,
   photoCount,
 }) => {
-  const handleNav = (step: AppStep) => {
-    playClickSound();
-    onStepChange(step);
-  };
-
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-[#22242C] bg-[#141519]/90 backdrop-blur-md px-4 sm:px-6 py-3 no-print">
+    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-[#0F1012]/60 backdrop-blur-lg px-4 sm:px-6 py-3 no-print transition-all duration-300">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         
         {/* Zone 1: Brand Title (Single text element) */}
         <div 
           onClick={() => handleNav('layouts')}
-          className="flex items-center gap-2 cursor-pointer group shrink-0"
+          className="flex items-center gap-3 cursor-pointer group shrink-0"
         >
-          <div className="w-8 h-8 rounded-lg bg-rose-500 text-white font-bold font-display flex items-center justify-center text-sm tracking-widest shadow-md group-hover:bg-rose-600 transition-colors">
-            BF
-          </div>
+          <img src="/logo.svg" alt="BilikFoto Logo" className="w-7 h-7 group-hover:scale-105 transition-transform opacity-90 group-hover:opacity-100" />
           <span className="font-display font-bold text-lg sm:text-xl tracking-tight text-white whitespace-nowrap">
-            BilikFoto<span className="text-rose-500">.</span>
+            BilikFoto
           </span>
         </div>
 
-        {/* Zone 2: Navigation Steps (Single-line controls) */}
-        <nav className="flex items-center gap-1 bg-[#1A1B21] p-1 rounded-xl border border-[#2B2D38] overflow-x-auto no-scrollbar">
-          
-          <button
-            onClick={() => handleNav('layouts')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all whitespace-nowrap shrink-0 ${
-              currentStep === 'layouts'
-                ? 'bg-rose-500 text-white shadow-xs'
-                : 'text-zinc-400 hover:text-white hover:bg-white/5'
-            }`}
-          >
-            <Layout className="w-3.5 h-3.5 shrink-0" />
-            <span>1. Layout</span>
-          </button>
-
-          <button
-            onClick={() => handleNav('capture')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all whitespace-nowrap shrink-0 ${
-              currentStep === 'capture'
-                ? 'bg-rose-500 text-white shadow-xs'
-                : 'text-zinc-400 hover:text-white hover:bg-white/5'
-            }`}
-          >
-            <Camera className="w-3.5 h-3.5 shrink-0" />
-            <span>2. Kamera</span>
-            {photoCount > 0 && (
-              <span className="ml-1 px-1.5 py-0.2 bg-black/40 rounded-full text-[10px] text-white font-mono">
-                {photoCount}
-              </span>
-            )}
-          </button>
-
-          <button
-            onClick={() => handleNav('customize')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all whitespace-nowrap shrink-0 ${
-              currentStep === 'customize'
-                ? 'bg-rose-500 text-white shadow-xs'
-                : 'text-zinc-400 hover:text-white hover:bg-white/5'
-            }`}
-          >
-            <Sliders className="w-3.5 h-3.5 shrink-0" />
-            <span>3. Kustomisasi</span>
-          </button>
-
-          <button
-            onClick={() => handleNav('export')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all whitespace-nowrap shrink-0 ${
-              currentStep === 'export'
-                ? 'bg-rose-500 text-white shadow-xs'
-                : 'text-zinc-400 hover:text-white hover:bg-white/5'
-            }`}
-          >
-            <Download className="w-3.5 h-3.5 shrink-0" />
-            <span>4. Ekspor</span>
-          </button>
-        </nav>
 
         {/* Zone 3: Primary Utility Actions */}
         <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={onLoadSamples}
             title="Gunakan Foto Sampel Studio"
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-rose-400 hover:text-white bg-rose-500/10 hover:bg-rose-500/20 rounded-lg border border-rose-500/20 transition-all whitespace-nowrap shrink-0"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-zinc-300 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg border border-white/10 transition-all whitespace-nowrap shrink-0"
           >
-            <Sparkles className="w-3.5 h-3.5 text-rose-400 shrink-0" />
             <span>Foto Sampel</span>
           </button>
 

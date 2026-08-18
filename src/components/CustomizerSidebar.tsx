@@ -15,7 +15,8 @@ import {
   Circle,
   HelpCircle,
   Pencil,
-  RotateCcw
+  RotateCcw,
+  Wand
 } from 'lucide-react';
 import { 
   CustomizationSettings, 
@@ -160,7 +161,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
     { id: 'swatches', label: 'Warna & Tekstur (56)', icon: <Palette className="w-4 h-4" /> },
     { id: 'shape', label: 'Bentuk & Layout', icon: <Layout className="w-4 h-4" /> },
     { id: 'stickers', label: 'Stiker & Coretan', icon: <Sticker className="w-4 h-4" /> },
-    { id: 'filter', label: 'Filter Foto', icon: <Sparkles className="w-4 h-4" /> },
+    { id: 'filter', label: 'Filter Foto', icon: <Wand className="w-4 h-4" /> },
     { id: 'text', label: 'Teks, Tanggal & Logo', icon: <Type className="w-4 h-4" /> },
     { id: 'templates', label: 'Template 1-Klik', icon: <Wand2 className="w-4 h-4" /> },
   ];
@@ -203,10 +204,13 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
     : PRESET_STICKERS.filter((s) => s.category === stickerCategory);
 
   return (
-    <div className="w-full bg-[#141519] rounded-2xl border border-[#23252E] overflow-hidden shadow-xl flex flex-col h-full text-[#F3F4F6]">
+    <div className="w-full bg-[#141519]/60 backdrop-blur-2xl lg:rounded-2xl border-t lg:border border-white/10 overflow-hidden shadow-[0_-10px_40px_rgba(0,0,0,0.3)] lg:shadow-2xl flex flex-col h-[65vh] lg:h-full text-[#F3F4F6] fixed bottom-0 left-0 right-0 z-30 lg:relative lg:z-0 rounded-t-3xl transition-all">
       
+      {/* Mobile drag handle */}
+      <div className="w-12 h-1.5 bg-white/20 rounded-full mx-auto mt-3 mb-1 lg:hidden shrink-0" />
+
       {/* Scrollable Tabs Header */}
-      <div className="flex items-center gap-1 p-2 bg-[#1A1B22] border-b border-[#2B2D38] overflow-x-auto no-scrollbar">
+      <div className="flex items-center gap-1 p-2 bg-black/20 border-b border-white/5 overflow-x-auto no-scrollbar shrink-0">
         {tabs.map((tab) => (
           <button
             key={tab.id}

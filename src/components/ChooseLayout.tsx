@@ -9,7 +9,8 @@ import {
   ArrowRight,
   Heart,
   Grid,
-  Film
+  Film,
+  Layout
 } from 'lucide-react';
 import { CustomizationSettings, LayoutCardItem, PhotoItem } from '../types';
 import { LAYOUT_CATALOG_CARDS } from '../data/presets';
@@ -60,12 +61,15 @@ export const ChooseLayout: React.FC<ChooseLayoutProps> = ({
   };
 
   return (
-    <div className="w-full min-h-[calc(100vh-120px)] bg-[#141519] text-[#F3F4F6] rounded-2xl border border-[#23252E] p-6 sm:p-8 flex flex-col justify-between my-auto shadow-2xl">
+    <div className="w-full min-h-[calc(100vh-120px)] bg-[#141519]/40 backdrop-blur-xl text-[#F3F4F6] rounded-2xl border border-white/5 p-6 sm:p-8 flex flex-col justify-between my-auto shadow-2xl relative overflow-hidden">
+      {/* Decorative ambient light */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-white/5 blur-[100px] pointer-events-none rounded-full" />
+
       
       {/* Header Title Section */}
       <div className="text-center max-w-2xl mx-auto mb-8">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-rose-500/10 border border-rose-500/20 rounded-full text-xs font-semibold text-rose-400 mb-3">
-          <Sparkles className="w-3.5 h-3.5" />
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-semibold text-zinc-300 mb-3">
+          <Layout className="w-3.5 h-3.5" />
           <span>Katalog Template Photobooth Strip</span>
         </div>
 
@@ -79,7 +83,7 @@ export const ChooseLayout: React.FC<ChooseLayoutProps> = ({
         {/* Category Filter Tabs */}
         <div className="flex items-center justify-center gap-2 mt-5 flex-wrap">
           {[
-            { id: 'all', label: 'Semua Layout', icon: Sparkles },
+            { id: 'all', label: 'Semua Layout', icon: Layout },
             { id: 'strip', label: 'Strip 4 Pose (6x2)', icon: Film },
             { id: 'polaroid', label: 'Duo & Hati', icon: Heart },
             { id: 'grid', label: 'Grid & Editorial', icon: Grid },
@@ -96,7 +100,7 @@ export const ChooseLayout: React.FC<ChooseLayoutProps> = ({
                 }}
                 className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all whitespace-nowrap shrink-0 ${
                   isActive
-                    ? 'bg-rose-500 text-white shadow-sm'
+                    ? 'bg-white text-black shadow-sm'
                     : 'bg-[#1A1B22] text-zinc-400 hover:text-white border border-[#2B2D38]'
                 }`}
               >
@@ -130,10 +134,10 @@ export const ChooseLayout: React.FC<ChooseLayoutProps> = ({
               <div
                 key={card.id}
                 onClick={() => handleCardClick(card)}
-                className={`group relative bg-[#1A1B22] rounded-xl border transition-all duration-200 flex flex-col items-center p-4 cursor-pointer hover:-translate-y-1 ${
+                className={`group relative bg-[#1A1B22]/60 backdrop-blur-md rounded-xl border transition-all duration-300 flex flex-col items-center p-4 cursor-pointer hover:-translate-y-2 hover:z-10 ${
                   isSelected
-                    ? 'border-rose-500 ring-2 ring-rose-500/30 shadow-lg shadow-rose-500/10'
-                    : 'border-[#2B2D38] hover:border-zinc-500'
+                    ? 'border-white ring-2 ring-white/30 shadow-[0_0_30px_rgba(255,255,255,0.1)]'
+                    : 'border-white/10 hover:border-white/50 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]'
                 }`}
               >
                 {/* Badge Top Left */}
@@ -148,70 +152,118 @@ export const ChooseLayout: React.FC<ChooseLayoutProps> = ({
 
                 {/* Selected Checkmark Indicator */}
                 {isSelected && (
-                  <div className="absolute -top-2.5 right-4 w-5 h-5 bg-rose-500 text-white rounded-full flex items-center justify-center shadow-md z-10">
+                  <div className="absolute -top-2.5 right-4 w-5 h-5 bg-white text-black rounded-full flex items-center justify-center shadow-md z-10">
                     <Check className="w-3.5 h-3.5 stroke-[3]" />
                   </div>
                 )}
 
                 {/* Card Strip Preview Frame Mockup */}
-                <div className="w-full h-64 bg-[#111216] rounded-lg border border-[#252732] flex items-center justify-center p-3 relative overflow-hidden group-hover:bg-[#16171D] transition-colors">
+                <div className="w-full h-64 bg-[#111216]/50 rounded-lg border border-white/5 flex items-center justify-center p-3 relative overflow-hidden group-hover:bg-[#16171D]/80 transition-colors">
                   
-                  {/* Visual Strip Miniature */}
-                  <div 
-                    style={{
-                      backgroundColor: card.defaultSettings?.frameColor || '#FFFFFF',
-                    }}
-                    className="w-22 h-56 rounded shadow-md border border-zinc-400/30 p-2 flex flex-col justify-between items-center transition-transform group-hover:scale-105"
-                  >
-                    {/* Mini Header Text */}
-                    <div className="text-[6px] font-bold text-zinc-800 tracking-tighter truncate w-full text-center">
-                      {card.defaultSettings?.headerText || 'photobooth'}
-                    </div>
+                  {/* Visual Strip Miniature Dynamic */}
+                  {(() => {
+                    const layoutType = card.layout || 'strip_4';
+                    const shape = card.defaultSettings?.photoShape || 'rect';
+                    const frameColor = card.defaultSettings?.frameColor || '#FFFFFF';
+                    const isDark = frameColor === '#000000' || frameColor === '#09090B' || frameColor === '#18181B';
+                    const textColor = card.defaultSettings?.headerColor || (isDark ? '#FFFFFF' : '#18181B');
+                    const textOpacity = isDark ? 'opacity-80' : 'opacity-60';
 
-                    {/* Mini Photo Slots */}
-                    <div className="flex-1 w-full flex flex-col justify-around py-1 gap-1">
-                      {[1, 2, 3, 4].map((slotIdx) => {
-                        const shape = card.defaultSettings?.photoShape || 'rect';
-                        return (
-                          <div
-                            key={slotIdx}
-                            className={`w-full h-9 bg-zinc-200 border border-zinc-300 flex items-center justify-center text-[9px] ${
-                              shape === 'heart'
-                                ? 'rounded-xs clip-heart bg-rose-200'
-                                : shape === 'circle'
-                                ? 'rounded-full'
-                                : shape === 'rounded'
-                                ? 'rounded-xs'
-                                : 'rounded-none'
-                            }`}
+                    // Determine container shape and slot count based on layout
+                    let containerClass = "w-22 h-56 flex-col";
+                    let slotArray = [1, 2, 3, 4];
+                    let slotsContainerClass = "flex-1 w-full flex flex-col justify-around py-1 gap-1";
+                    
+                    if (layoutType === 'strip_3') {
+                      slotArray = [1, 2, 3];
+                    } else if (layoutType === 'strip_2') {
+                      containerClass = "w-22 h-40 flex-col";
+                      slotArray = [1, 2];
+                    } else if (layoutType === 'grid_2x2') {
+                      containerClass = "w-28 h-32 flex-col";
+                      slotsContainerClass = "flex-1 w-full grid grid-cols-2 grid-rows-2 gap-1 py-1";
+                      slotArray = [1, 2, 3, 4];
+                    } else if (layoutType === 'polaroid_duo') {
+                      containerClass = "w-32 h-24 flex-col";
+                      slotsContainerClass = "flex-1 w-full grid grid-cols-2 gap-1 py-1";
+                      slotArray = [1, 2];
+                    } else if (layoutType === 'editorial') {
+                      containerClass = "w-28 h-36 flex-col";
+                      slotsContainerClass = "flex-1 w-full flex flex-col gap-1 py-1";
+                      slotArray = [1, 2, 3];
+                    }
+
+                    return (
+                      <div 
+                        style={{ backgroundColor: frameColor }}
+                        className={`${containerClass} rounded shadow-md border border-zinc-400/30 p-2 flex justify-between items-center transition-transform group-hover:scale-105`}
+                      >
+                        {/* Mini Header Text */}
+                        {card.defaultSettings?.showHeader !== false && (
+                          <div 
+                            style={{ color: textColor }}
+                            className={`text-[6px] font-bold tracking-tighter truncate w-full text-center ${textOpacity}`}
                           >
-                            {slotIdx === 1 ? '✨' : slotIdx === 2 ? '📸' : slotIdx === 3 ? '🎀' : '✌️'}
+                            {card.defaultSettings?.headerText || 'photobooth'}
                           </div>
-                        );
-                      })}
-                    </div>
+                        )}
 
-                    {/* Mini Footer Barcode */}
-                    <div className="w-full flex flex-col items-center gap-0.5">
-                      <div className="text-[5px] font-mono text-zinc-600">
-                        {card.defaultSettings?.footerText || 'LIFE FOUR CUTS'}
+                        {/* Mini Photo Slots */}
+                        <div className={slotsContainerClass}>
+                          {layoutType === 'editorial' ? (
+                            <>
+                              <div className="w-full h-1/2 bg-zinc-200 border border-zinc-300 flex items-center justify-center text-[9px]">✨</div>
+                              <div className="w-full h-1/2 flex gap-1">
+                                <div className="w-1/2 h-full bg-zinc-200 border border-zinc-300 flex items-center justify-center text-[9px]">📸</div>
+                                <div className="w-1/2 h-full bg-zinc-200 border border-zinc-300 flex items-center justify-center text-[9px]">🎀</div>
+                              </div>
+                            </>
+                          ) : (
+                            slotArray.map((slotIdx) => (
+                              <div
+                                key={slotIdx}
+                                className={`w-full h-full min-h-[10px] bg-zinc-200 border border-zinc-300 flex items-center justify-center text-[9px] ${
+                                  shape === 'heart'
+                                    ? 'rounded-xs clip-heart bg-rose-200'
+                                    : shape === 'circle'
+                                    ? 'rounded-full'
+                                    : shape === 'rounded'
+                                    ? 'rounded-xs'
+                                    : 'rounded-none'
+                                }`}
+                              >
+                                {slotIdx === 1 ? '✨' : slotIdx === 2 ? '📸' : slotIdx === 3 ? '🎀' : '✌️'}
+                              </div>
+                            ))
+                          )}
+                        </div>
+
+                        {/* Mini Footer */}
+                        <div className="w-full flex flex-col items-center gap-0.5">
+                          <div 
+                            style={{ color: card.defaultSettings?.footerColor || textColor }}
+                            className={`text-[5px] font-mono ${textOpacity}`}
+                          >
+                            {card.defaultSettings?.footerText || 'LIFE FOUR CUTS'}
+                          </div>
+                          <div className={`w-12 h-1 rounded-2xs opacity-50`} style={{ backgroundColor: textColor }}></div>
+                        </div>
                       </div>
-                      <div className="w-12 h-1 bg-zinc-800 rounded-2xs opacity-70"></div>
-                    </div>
-                  </div>
+                    );
+                  })()}
 
                 </div>
 
                 {/* Card Title & Details */}
                 <div className="w-full mt-3 text-center">
-                  <h3 className="font-bold text-white text-sm leading-tight group-hover:text-rose-400 transition-colors">
+                  <h3 className="font-bold text-white text-sm leading-tight transition-colors">
                     {card.name}
                   </h3>
                   <p className="text-[11px] text-zinc-400 line-clamp-1 mt-0.5">
                     {card.subtitle}
                   </p>
                   
-                  <div className="mt-2 text-[10px] font-mono font-medium text-rose-400 bg-rose-500/10 border border-rose-500/20 rounded py-0.5 px-2 inline-block">
+                  <div className="mt-2 text-[10px] font-mono font-medium text-zinc-300 bg-white/10 border border-white/20 rounded py-0.5 px-2 inline-block">
                     {card.sizeTag}
                   </div>
                 </div>
@@ -224,8 +276,8 @@ export const ChooseLayout: React.FC<ChooseLayoutProps> = ({
                   }}
                   className={`w-full mt-3 py-1.5 px-3 rounded-lg text-xs font-semibold transition-all flex items-center justify-center gap-1.5 whitespace-nowrap shrink-0 ${
                     isSelected
-                      ? 'bg-rose-500 text-white shadow-sm'
-                      : 'bg-[#242630] hover:bg-rose-500 hover:text-white text-zinc-300'
+                      ? 'bg-white text-black shadow-sm'
+                      : 'bg-[#242630] hover:bg-white hover:text-black text-zinc-300'
                   }`}
                 >
                   {isSelected ? (
@@ -255,7 +307,7 @@ export const ChooseLayout: React.FC<ChooseLayoutProps> = ({
       </div>
 
       {/* Bottom Pagination Dots & Next Action Bar */}
-      <div className="w-full max-w-md mx-auto mt-6 flex flex-col items-center gap-4">
+      <div className="w-full max-w-md mx-auto mt-2 sm:-mt-2 relative z-10 flex flex-col items-center gap-3">
         
         {/* Pagination Dots */}
         <div className="flex items-center gap-1.5">
@@ -268,7 +320,7 @@ export const ChooseLayout: React.FC<ChooseLayoutProps> = ({
               }}
               aria-label={`Halaman ${idx + 1}`}
               className={`h-2 rounded-full transition-all ${
-                currentPageIndex === idx ? 'w-6 bg-rose-500' : 'w-2 bg-zinc-700 hover:bg-zinc-600'
+                currentPageIndex === idx ? 'w-6 bg-white' : 'w-2 bg-zinc-700 hover:bg-zinc-600'
               }`}
             />
           ))}
@@ -279,7 +331,7 @@ export const ChooseLayout: React.FC<ChooseLayoutProps> = ({
           {photos.length > 0 ? (
             <button
               onClick={onGoToCustomize}
-              className="flex-1 flex items-center justify-center gap-2 py-3 px-5 bg-rose-500 hover:bg-rose-600 text-white font-bold rounded-xl shadow-lg shadow-rose-500/20 transition-all active:scale-[0.98] whitespace-nowrap shrink-0"
+              className="flex-1 flex items-center justify-center gap-2 py-3 px-5 bg-white hover:bg-zinc-200 text-black font-bold rounded-xl shadow-lg transition-all active:scale-[0.98] whitespace-nowrap shrink-0"
             >
               <Sliders className="w-4 h-4 shrink-0" />
               <span>Lanjut Kustomisasi Studio</span>
@@ -288,7 +340,7 @@ export const ChooseLayout: React.FC<ChooseLayoutProps> = ({
           ) : (
             <button
               onClick={onGoToCamera}
-              className="flex-1 flex items-center justify-center gap-2 py-3 px-5 bg-rose-500 hover:bg-rose-600 text-white font-bold rounded-xl shadow-lg shadow-rose-500/20 transition-all active:scale-[0.98] whitespace-nowrap shrink-0"
+              className="flex-1 flex items-center justify-center gap-2 py-3 px-5 bg-white hover:bg-zinc-200 text-black font-bold rounded-xl shadow-lg transition-all active:scale-[0.98] whitespace-nowrap shrink-0"
             >
               <Camera className="w-4 h-4 shrink-0" />
               <span>Mulai Sesi Foto Kamera</span>

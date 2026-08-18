@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { Camera, RefreshCw, Upload, Sparkles, Check, Trash2, ArrowRight, Play, Eye, RotateCw, VideoOff, FlipHorizontal } from 'lucide-react';
+import { Camera, RefreshCw, Upload, Sparkles, Check, Trash2, ArrowRight, Play, Eye, RotateCw, VideoOff, FlipHorizontal, ImageIcon } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
 import { PhotoItem, FilterType } from '../types';
 import { generateSamplePhotos } from '../data/presets';
@@ -34,6 +35,7 @@ export const CameraBooth: React.FC<CameraBoothProps> = ({
   const [sequenceIndex, setSequenceIndex] = useState<number>(0);
   const [flashActive, setFlashActive] = useState<boolean>(false);
   const [selectedSlotIndex, setSelectedSlotIndex] = useState<number | null>(null);
+  const [draggedSlotIndex, setDraggedSlotIndex] = useState<number | null>(null);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -234,26 +236,66 @@ export const CameraBooth: React.FC<CameraBoothProps> = ({
     const newPhotos: PhotoItem[] = [...photos];
     const fileList: File[] = Array.from(files);
 
+    let nextAvailableSlot = newPhotos.length;
     let loadedCount = 0;
+
     fileList.forEach((file: File, index: number) => {
       const reader = new FileReader();
       reader.onload = (event: ProgressEvent<FileReader>) => {
         const result = event.target?.result as string;
         if (result) {
-          const slot = (selectedSlotIndex !== null ? selectedSlotIndex : newPhotos.length + index) % 8;
+          let slot;
+          if (selectedSlotIndex !== null) {
+            slot = (selectedSlotIndex + index) % requiredCount;
+          } else {
+            slot = nextAvailableSlot % requiredCount;
+            nextAvailableSlot++;
+          }
+          
           newPhotos[slot] = {
             id: `upload-${Date.now()}-${index}`,
             dataUrl: result,
           };
           loadedCount++;
           if (loadedCount === fileList.length) {
-            onPhotosChange([...newPhotos]);
+            // Trim to strictly match requiredCount
+            const validPhotos = newPhotos.filter(Boolean).slice(0, requiredCount);
+            onPhotosChange(validPhotos);
             setSelectedSlotIndex(null);
+            
+            if (fileInputRef.current) {
+              fileInputRef.current.value = '';
+            }
           }
         }
       };
       reader.readAsDataURL(file);
     });
+  };
+
+  // Drag and drop for reordering slots
+  const handleDragStart = (e: React.DragEvent, index: number) => {
+    setDraggedSlotIndex(index);
+    e.dataTransfer.effectAllowed = 'move';
+  };
+
+  const handleDragOver = (e: React.DragEvent, index: number) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+  };
+
+  const handleDrop = (e: React.DragEvent, targetIndex: number) => {
+    e.preventDefault();
+    if (draggedSlotIndex === null || draggedSlotIndex === targetIndex) return;
+
+    const newPhotos = [...photos];
+    const temp = newPhotos[draggedSlotIndex];
+    newPhotos[draggedSlotIndex] = newPhotos[targetIndex];
+    newPhotos[targetIndex] = temp;
+    
+    // Remove empty slots caused by moving to an empty index and maintain sequential order
+    onPhotosChange(newPhotos.filter(Boolean));
+    setDraggedSlotIndex(null);
   };
 
   // Delete / Clear a slot
@@ -301,8 +343,8 @@ export const CameraBooth: React.FC<CameraBoothProps> = ({
                     disabled={isCapturingSequence}
                     className={`px-2 py-0.5 rounded text-xs font-bold transition-all whitespace-nowrap shrink-0 ${
                       countdownDuration === dur
-                        ? 'bg-rose-500 text-white'
-                        : 'text-zinc-400 hover:text-zinc-200'
+                        ? 'bg-white text-black'
+                        : 'text-zinc-400 hover:text-white'
                     }`}
                   >
                     {dur}s
@@ -315,18 +357,36 @@ export const CameraBooth: React.FC<CameraBoothProps> = ({
             <div className="relative aspect-4/3 w-full bg-[#0A0B0D] rounded-xl overflow-hidden border border-[#252732] shadow-inner flex items-center justify-center">
               
               {isCameraActive ? (
-                <video
-                  ref={videoRef}
-                  autoPlay
-                  playsInline
-                  muted
-                  className={`w-full h-full object-cover transition-transform ${
-                    isMirrored ? 'scale-x-[-1]' : ''
-                  }`}
-                />
+                <>
+                  <video
+                    ref={videoRef}
+                    autoPlay
+                    playsInline
+                    muted
+                    className={`w-full h-full object-cover transition-transform ${
+                      isMirrored ? 'scale-x-[-1]' : ''
+                    }`}
+                  />
+                  {/* Viewfinder Overlay */}
+                  <div className="absolute inset-4 border-0 pointer-events-none z-10 flex flex-col justify-between p-2">
+                    <div className="flex justify-between w-full">
+                      <div className="w-8 h-8 border-t-2 border-l-2 border-white/70" />
+                      <div className="w-8 h-8 border-t-2 border-r-2 border-white/70" />
+                    </div>
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-2">
+                      <div className="w-1 h-1 bg-white/50 rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-red-500/80 rounded-full" />
+                      <div className="w-1 h-1 bg-white/50 rounded-full" />
+                    </div>
+                    <div className="flex justify-between w-full">
+                      <div className="w-8 h-8 border-b-2 border-l-2 border-white/70" />
+                      <div className="w-8 h-8 border-b-2 border-r-2 border-white/70" />
+                    </div>
+                  </div>
+                </>
               ) : (
                 <div className="flex flex-col items-center justify-center p-6 text-center text-zinc-300 gap-3 max-w-md mx-auto">
-                  <div className="w-12 h-12 rounded-full bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400">
+                  <div className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white">
                     <VideoOff className="w-6 h-6" />
                   </div>
 
@@ -340,7 +400,7 @@ export const CameraBooth: React.FC<CameraBoothProps> = ({
                   <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
                     <button
                       onClick={() => startCamera()}
-                      className="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0"
+                      className="px-3 py-1.5 bg-white hover:bg-zinc-200 text-black text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0"
                     >
                       <RefreshCw className="w-3.5 h-3.5 shrink-0" />
                       <span>Coba Hubungkan</span>
@@ -348,9 +408,9 @@ export const CameraBooth: React.FC<CameraBoothProps> = ({
 
                     <button
                       onClick={handleLoadSamplePhotos}
-                      className="px-3 py-1.5 bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 border border-rose-500/30 text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0"
+                      className="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white border border-white/30 text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0"
                     >
-                      <Sparkles className="w-3.5 h-3.5 text-rose-400 shrink-0" />
+                      <ImageIcon className="w-3.5 h-3.5 text-white shrink-0" />
                       <span>Gunakan Sampel</span>
                     </button>
 
@@ -373,13 +433,27 @@ export const CameraBooth: React.FC<CameraBoothProps> = ({
               />
 
               {/* Giant Countdown Overlay */}
-              {countdownCurrent !== null && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-xs">
-                  <div className="w-24 h-24 rounded-full bg-rose-500 text-white flex items-center justify-center font-display font-extrabold text-5xl shadow-2xl scale-110">
-                    {countdownCurrent}
-                  </div>
-                </div>
-              )}
+              <AnimatePresence>
+                {countdownCurrent !== null && (
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-20"
+                  >
+                    <motion.div 
+                      key={countdownCurrent}
+                      initial={{ scale: 0.5, opacity: 0 }}
+                      animate={{ scale: 1.2, opacity: 1 }}
+                      exit={{ scale: 1.5, opacity: 0 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      className="w-32 h-32 rounded-full bg-white/90 text-black flex items-center justify-center font-display font-extrabold text-7xl shadow-[0_0_50px_rgba(255,255,255,0.4)] border-4 border-black/10 backdrop-blur-md"
+                    >
+                      {countdownCurrent}
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               {/* Floating Camera Tools Overlay */}
               {isCameraActive && (
@@ -459,10 +533,10 @@ export const CameraBooth: React.FC<CameraBoothProps> = ({
               {photos.length > 0 && (
                 <button
                   onClick={() => onPhotosChange([])}
-                  className="flex items-center gap-1 text-xs text-rose-400 hover:text-rose-300 font-medium transition-colors"
+                  className="flex items-center gap-1 text-xs text-zinc-400 hover:text-white font-medium transition-colors"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
-                  <span>Reset Semua</span>
+                  <span>Reset</span>
                 </button>
               )}
             </div>
@@ -474,9 +548,13 @@ export const CameraBooth: React.FC<CameraBoothProps> = ({
                 return (
                   <div
                     key={index}
+                    draggable={!!photo}
+                    onDragStart={(e) => handleDragStart(e, index)}
+                    onDragOver={(e) => handleDragOver(e, index)}
+                    onDrop={(e) => handleDrop(e, index)}
                     className={`group relative aspect-4/3 rounded-xl overflow-hidden border transition-all ${
                       photo
-                        ? 'border-[#2D303E] bg-[#111216]'
+                        ? 'border-[#2D303E] bg-[#111216] cursor-move'
                         : 'border-dashed border-[#2B2D38] bg-[#0E0F12] flex flex-col items-center justify-center'
                     }`}
                   >

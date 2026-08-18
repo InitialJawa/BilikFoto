@@ -247,7 +247,7 @@ export const PhotoStripCanvas: React.FC<PhotoStripCanvasProps> = ({
       {/* Studio Light-Table Viewport */}
       <div 
         ref={containerRef}
-        className="w-full flex items-center justify-center p-4 sm:p-8 bg-[#0B0C0E] rounded-3xl border border-[#23252E] overflow-auto min-h-[580px] shadow-2xl relative select-none"
+        className="w-full flex items-center justify-center p-4 sm:p-8 bg-[#0B0C0E]/40 backdrop-blur-md rounded-3xl border border-white/5 overflow-auto min-h-[580px] shadow-inner relative select-none lg:mb-0 mb-[65vh]"
       >
         <div
           style={{
@@ -255,7 +255,7 @@ export const PhotoStripCanvas: React.FC<PhotoStripCanvasProps> = ({
             transformOrigin: 'top center',
             transition: 'transform 0.1s ease-out',
           }}
-          className="relative inline-block shadow-2xl rounded-2xl overflow-visible my-4"
+          className="relative inline-block shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-sm overflow-visible my-4"
         >
           {/* Main Visual Canvas */}
           <canvas
@@ -269,9 +269,11 @@ export const PhotoStripCanvas: React.FC<PhotoStripCanvasProps> = ({
             style={{
               width: `${dim.width}px`,
               height: `${dim.height}px`,
-              cursor: activeTool === 'doodle' ? 'crosshair' : isDraggingSticker ? 'grabbing' : 'default',
+              cursor: activeTool === 'doodle' 
+                ? `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="${doodleWidth*2}" height="${doodleWidth*2}" viewBox="0 0 ${doodleWidth*2} ${doodleWidth*2}"><circle cx="${doodleWidth}" cy="${doodleWidth}" r="${doodleWidth}" fill="${doodleColor.replace('#', '%23')}" opacity="0.8"/></svg>') ${doodleWidth} ${doodleWidth}, crosshair` 
+                : isDraggingSticker ? 'grabbing' : 'default',
             }}
-            className="rounded-2xl shadow-2xl block bg-[#141519] border border-[#282A33]"
+            className="block bg-white shadow-lg"
           />
 
           {/* Selected Sticker Floating Control Handles */}

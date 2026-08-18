@@ -8,93 +8,13 @@ export const FONT_OPTIONS = [
   { id: 'Outfit', label: 'Outfit (Trendy Korea)', class: 'font-modern' },
 ];
 
-// Layout Catalog Cards for chooseLayout.html screen
 export const LAYOUT_CATALOG_CARDS: LayoutCardItem[] = [
-  {
-    id: 'hearts-filter-layout',
-    name: 'Hearts Filter Layout',
-    subtitle: 'Bentuk hati romantis dengan nuansa pink pastel',
-    sizeTag: 'Size 6 x 2 Strip (4 Pose)',
-    badge: 'NEW LAYOUT',
-    badgeColor: '#EC4899',
-    layout: 'strip_4',
-    defaultSettings: {
-      photoShape: 'heart',
-      frameColor: '#FCE7F3',
-      patternId: 'pastel-pink',
-      filter: 'soft_blush',
-      photoRadius: 16,
-      headerText: '♡ HEARTS PHOTOBOOTH ♡',
-      footerText: 'WITH ALL MY LOVE',
-      logoLanguage: 'ENG'
-    }
-  },
-  {
-    id: 'dog-filter-layout',
-    name: 'Dog Filter Layout',
-    subtitle: 'Tema binatang lucu dengan frame manis dan filter vintage',
-    sizeTag: 'Size 6 x 2 Strip (4 Pose)',
-    badge: 'NEW LAYOUT',
-    badgeColor: '#EC4899',
-    layout: 'strip_4',
-    defaultSettings: {
-      photoShape: 'rounded',
-      frameColor: '#FFFFFF',
-      patternId: 'pure-white',
-      filter: 'vintage_90s',
-      photoRadius: 12,
-      headerText: '🐶 PUPPY MEMORIES 🐾',
-      footerText: 'CUTEST MOMENTS',
-      logoLanguage: 'ENG'
-    }
-  },
-  {
-    id: 'vintage-layout',
-    name: 'Vintage Layout',
-    subtitle: 'Strip klasik gelap dengan font editorial bergaya analog',
-    sizeTag: 'Size 6 x 2 Strip (4 Pose)',
-    badge: 'NEW LAYOUT',
-    badgeColor: '#EC4899',
-    layout: 'strip_4',
-    defaultSettings: {
-      photoShape: 'rect',
-      frameColor: '#18181B',
-      patternId: 'pure-black',
-      filter: 'bw_noir',
-      photoRadius: 2,
-      headerText: '@photobooth.io',
-      footerText: 'VINTAGE ARCHIVE',
-      logoLanguage: 'ENG'
-    }
-  },
-  {
-    id: 'solace-layout',
-    name: 'solace Layout',
-    subtitle: 'Nuansa merah marun anggun dengan tipografi minimalis',
-    sizeTag: 'Size 6 x 2 Strip (4 Pose)',
-    badge: 'NEW LAYOUT',
-    badgeColor: '#EC4899',
-    layout: 'strip_4',
-    defaultSettings: {
-      photoShape: 'rounded',
-      frameColor: '#7F1D1D',
-      patternId: 'burgundy-wine',
-      filter: 'golden_hour',
-      photoRadius: 8,
-      headerText: 'solace',
-      headerFont: 'Caveat',
-      headerColor: '#FFFFFF',
-      footerText: 'ETERNAL PEACE',
-      footerColor: '#FFFFFF',
-      logoLanguage: 'ENG'
-    }
-  },
   {
     id: 'classic-layout',
     name: 'Classic Layout',
     subtitle: 'Format strip 4 foto legendaris ala photobooth Korea',
     sizeTag: 'Size 6 x 2 Strip (4 Pose)',
-    badge: 'TRY IT NOW',
+    badge: 'POPULAR',
     badgeColor: '#EAB308',
     layout: 'strip_4',
     defaultSettings: {
@@ -105,44 +25,6 @@ export const LAYOUT_CATALOG_CARDS: LayoutCardItem[] = [
       photoRadius: 6,
       headerText: 'photobooth',
       footerText: 'LIFE FOUR CUTS',
-      logoLanguage: 'ENG'
-    }
-  },
-  {
-    id: 'with-love-layout',
-    name: 'With Love Layout',
-    subtitle: 'Bingkai polkadot pink dengan cutout bulat/lingkaran',
-    sizeTag: 'Size 6 x 2 Strip (4 Pose)',
-    badge: 'TEMPLATES',
-    badgeColor: '#EC4899',
-    layout: 'strip_4',
-    defaultSettings: {
-      photoShape: 'circle',
-      frameColor: '#FCE7F3',
-      patternId: 'pattern-polkadot-pink',
-      filter: 'soft_blush',
-      photoRadius: 24,
-      headerText: 'WITH LOVE...',
-      footerText: 'SWEET TOGETHER',
-      logoLanguage: 'ENG'
-    }
-  },
-  {
-    id: 'film-35mm-layout',
-    name: 'Retro 35mm Film Roll',
-    subtitle: 'Klise film analog asli dengan lubang sprocket dan penanda ISO',
-    sizeTag: 'Size 6 x 2 Strip (4 Pose)',
-    badge: 'POPULAR',
-    badgeColor: '#F97316',
-    layout: 'film_35mm',
-    defaultSettings: {
-      photoShape: 'rect',
-      frameColor: '#18181B',
-      patternId: 'pure-black',
-      filter: 'vintage_90s',
-      photoRadius: 2,
-      headerText: '🎞️ KODAK PORTRA 400',
-      footerText: 'EXP. 1998 • FILM ARCHIVE',
       logoLanguage: 'ENG'
     }
   },
@@ -170,7 +52,7 @@ export const LAYOUT_CATALOG_CARDS: LayoutCardItem[] = [
     name: 'Polaroid Duo',
     subtitle: 'Dua frame polaroid berdampingan dengan catatan tulisan tangan',
     sizeTag: 'Size 4 x 6 Landscape (2 Pose)',
-    badge: 'TEMPLATES',
+    badge: 'NEW',
     badgeColor: '#A855F7',
     layout: 'polaroid_duo',
     defaultSettings: {
@@ -180,9 +62,85 @@ export const LAYOUT_CATALOG_CARDS: LayoutCardItem[] = [
       filter: 'vintage_90s',
       photoRadius: 2,
       showHeader: false,
-      footerText: 'Kenangan Terbaik Kita ✨',
+      footerText: 'Kenangan Terbaik Kita',
       footerFont: 'Caveat',
       logoLanguage: 'IDN'
+    }
+  },
+  {
+    id: 'warm-latte',
+    name: 'Warm Mocha & Cafe',
+    subtitle: 'Nuansa cokelat hangat yang nyaman dan santai',
+    sizeTag: 'Strip Pendek (3 Pose)',
+    badge: 'AESTHETIC',
+    badgeColor: '#D97706',
+    layout: 'strip_3',
+    defaultSettings: {
+      photoShape: 'rounded',
+      frameColor: '#EFEAE4',
+      patternId: 'beige-latte',
+      filter: 'golden_hour',
+      photoRadius: 10,
+      headerText: 'WARM COFFEE & YOU',
+      footerText: 'Hari yang Menyenangkan',
+      logoLanguage: 'IDN'
+    }
+  },
+  {
+    id: 'noir-minimalist',
+    name: 'Noir Editorial',
+    subtitle: 'Kontras tinggi hitam putih dengan tipografi elegan',
+    sizeTag: 'Size 4 x 4 Grid (4 Pose)',
+    badge: 'PRO',
+    badgeColor: '#18181B',
+    layout: 'grid_2x2',
+    defaultSettings: {
+      photoShape: 'rect',
+      frameColor: '#09090B',
+      patternId: 'pure-black',
+      filter: 'bw_noir',
+      photoRadius: 0,
+      headerText: 'VOGUE / STUDIO',
+      footerText: 'SPECIAL EDITION',
+      logoLanguage: 'ENG'
+    }
+  },
+  {
+    id: 'film-35mm-layout',
+    name: 'Retro 35mm Film Roll',
+    subtitle: 'Klise film analog asli dengan lubang sprocket dan penanda ISO',
+    sizeTag: 'Size 6 x 2 Strip (4 Pose)',
+    badge: 'POPULAR',
+    badgeColor: '#F97316',
+    layout: 'film_35mm',
+    defaultSettings: {
+      photoShape: 'rect',
+      frameColor: '#18181B',
+      patternId: 'pure-black',
+      filter: 'vintage_90s',
+      photoRadius: 2,
+      headerText: 'KODAK PORTRA 400',
+      footerText: 'EXP. 1998 • FILM ARCHIVE',
+      logoLanguage: 'ENG'
+    }
+  },
+  {
+    id: 'mini-strip-2',
+    name: 'Mini Strip Duo',
+    subtitle: 'Strip imut dengan 2 foto, cocok untuk pasangan',
+    sizeTag: 'Mini Strip (2 Pose)',
+    badge: 'CUTE',
+    badgeColor: '#EC4899',
+    layout: 'strip_2',
+    defaultSettings: {
+      photoShape: 'circle',
+      frameColor: '#FCE7F3',
+      patternId: 'pastel-pink',
+      filter: 'soft_blush',
+      photoRadius: 20,
+      headerText: 'COUPLE',
+      footerText: 'WITH LOVE',
+      logoLanguage: 'ENG'
     }
   },
   {
@@ -422,26 +380,26 @@ export const DEFAULT_SETTINGS: CustomizationSettings = {
 
   logoLanguage: 'ENG',
 
-  showHeader: true,
+  showHeader: false,
   headerText: 'photobooth',
   headerFont: 'Plus Jakarta Sans',
   headerColor: '#18181B',
   headerSize: 18,
 
-  showFooter: true,
+  showFooter: false,
   footerText: 'photobooth',
   footerSubtext: 'studio moments',
   footerFont: 'Plus Jakarta Sans',
   footerColor: '#18181B',
 
-  showDate: true,
+  showDate: false,
   dateFormat: 'short',
   customDateText: '',
-  showTime: true,
-  showLocation: true,
+  showTime: false,
+  showLocation: false,
   locationText: 'Jakarta, ID',
-  showBarcode: true,
-  showQrCode: true,
+  showBarcode: false,
+  showQrCode: false,
   barcodeNumber: '899302194820',
 
   stickers: [],
