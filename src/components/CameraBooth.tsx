@@ -322,12 +322,12 @@ export const CameraBooth: React.FC<CameraBoothProps> = ({
             {/* Top Camera Status Bar */}
             <div className="flex items-center justify-between mb-3 text-xs">
               <div className="flex items-center gap-2">
-                <span className={`w-2.5 h-2.5 rounded-full ${isCameraActive ? 'bg-emerald-500 animate-pulse' : 'bg-rose-500'}`} />
+                <span className={`w-2.5 h-2.5 rounded-full ${isCameraActive ? 'bg-emerald-500 animate-pulse' : 'bg-white'}`} />
                 <span className="font-semibold text-zinc-300 whitespace-nowrap">
                   {isCameraActive ? 'Kamera Live' : 'Kamera Nonaktif'}
                 </span>
                 {isCapturingSequence && (
-                  <span className="px-2 py-0.5 bg-rose-500/20 text-rose-400 font-bold rounded border border-rose-500/30 whitespace-nowrap font-mono">
+                  <span className="px-2 py-0.5 bg-white/20 text-zinc-400 font-bold rounded border border-white/30 whitespace-nowrap font-mono">
                     Pose {sequenceIndex}/{requiredCount}
                   </span>
                 )}
@@ -462,7 +462,7 @@ export const CameraBooth: React.FC<CameraBoothProps> = ({
                     onClick={() => setIsMirrored(!isMirrored)}
                     title={isMirrored ? 'Mode Normal' : 'Cermin Kamera (Mirror)'}
                     className={`p-1.5 rounded text-xs font-medium transition-all ${
-                      isMirrored ? 'bg-rose-500 text-white' : 'text-zinc-300 hover:bg-white/10'
+                      isMirrored ? 'bg-white text-black' : 'text-zinc-300 hover:bg-white/10'
                     }`}
                   >
                     <FlipHorizontal className="w-4 h-4" />
@@ -506,7 +506,7 @@ export const CameraBooth: React.FC<CameraBoothProps> = ({
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-white shadow-lg transition-all active:scale-95 whitespace-nowrap shrink-0 ${
                   isCapturingSequence
                     ? 'bg-zinc-700 cursor-not-allowed opacity-60'
-                    : 'bg-rose-500 hover:bg-rose-600 shadow-rose-500/20'
+                    : 'bg-white hover:bg-zinc-200 shadow-white/10'
                 }`}
               >
                 <Camera className="w-4 h-4 shrink-0" />
@@ -571,7 +571,7 @@ export const CameraBooth: React.FC<CameraBoothProps> = ({
                             onClick={() => triggerCapture(index)}
                             disabled={!isCameraActive || isCapturingSequence}
                             title="Foto Ulang Slot Ini"
-                            className="p-1.5 bg-rose-500 text-white rounded-lg text-xs font-medium hover:bg-rose-600 transition-colors"
+                            className="p-1.5 bg-white text-black rounded-lg text-xs font-medium hover:bg-zinc-200 transition-colors"
                           >
                             <RefreshCw className="w-3.5 h-3.5" />
                           </button>
@@ -603,7 +603,7 @@ export const CameraBooth: React.FC<CameraBoothProps> = ({
                               fileInputRef.current?.click();
                             }
                           }}
-                          className="text-[11px] text-rose-400 hover:text-rose-300 font-semibold underline"
+                          className="text-[11px] text-zinc-400 hover:text-zinc-300 font-semibold underline"
                         >
                           + Isi Foto
                         </button>
@@ -620,7 +620,7 @@ export const CameraBooth: React.FC<CameraBoothProps> = ({
               disabled={photos.length === 0}
               className={`w-full flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-bold text-xs sm:text-sm text-white transition-all shadow-lg whitespace-nowrap shrink-0 ${
                 photos.length > 0
-                  ? 'bg-rose-500 hover:bg-rose-600 shadow-rose-500/20'
+                  ? 'bg-white hover:bg-zinc-200 shadow-white/10'
                   : 'bg-[#1E2028] text-zinc-600 cursor-not-allowed border border-[#2B2D38]'
               }`}
             >

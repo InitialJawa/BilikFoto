@@ -15,7 +15,7 @@ export const LAYOUT_CATALOG_CARDS: LayoutCardItem[] = [
     subtitle: 'Format strip 4 foto legendaris ala photobooth Korea',
     sizeTag: 'Size 6 x 2 Strip (4 Pose)',
     badge: 'POPULAR',
-    badgeColor: '#EAB308',
+    badgeColor: '#FFFFFF',
     layout: 'strip_4',
     defaultSettings: {
       photoShape: 'rect',
@@ -34,7 +34,7 @@ export const LAYOUT_CATALOG_CARDS: LayoutCardItem[] = [
     subtitle: 'Format 4 foto kotak instagramable dengan bingkai tebal',
     sizeTag: 'Size 4 x 4 Grid (4 Pose)',
     badge: 'HOT',
-    badgeColor: '#EF4444',
+    badgeColor: '#FFFFFF',
     layout: 'grid_2x2',
     defaultSettings: {
       photoShape: 'rounded',
@@ -53,7 +53,7 @@ export const LAYOUT_CATALOG_CARDS: LayoutCardItem[] = [
     subtitle: 'Dua frame polaroid berdampingan dengan catatan tulisan tangan',
     sizeTag: 'Size 4 x 6 Landscape (2 Pose)',
     badge: 'NEW',
-    badgeColor: '#A855F7',
+    badgeColor: '#FFFFFF',
     layout: 'polaroid_duo',
     defaultSettings: {
       photoShape: 'rect',
@@ -73,7 +73,7 @@ export const LAYOUT_CATALOG_CARDS: LayoutCardItem[] = [
     subtitle: 'Nuansa cokelat hangat yang nyaman dan santai',
     sizeTag: 'Strip Pendek (3 Pose)',
     badge: 'AESTHETIC',
-    badgeColor: '#D97706',
+    badgeColor: '#FFFFFF',
     layout: 'strip_3',
     defaultSettings: {
       photoShape: 'rounded',
@@ -92,7 +92,7 @@ export const LAYOUT_CATALOG_CARDS: LayoutCardItem[] = [
     subtitle: 'Kontras tinggi hitam putih dengan tipografi elegan',
     sizeTag: 'Size 4 x 4 Grid (4 Pose)',
     badge: 'PRO',
-    badgeColor: '#18181B',
+    badgeColor: '#FFFFFF',
     layout: 'grid_2x2',
     defaultSettings: {
       photoShape: 'rect',
@@ -111,7 +111,7 @@ export const LAYOUT_CATALOG_CARDS: LayoutCardItem[] = [
     subtitle: 'Klise film analog asli dengan lubang sprocket dan penanda ISO',
     sizeTag: 'Size 6 x 2 Strip (4 Pose)',
     badge: 'POPULAR',
-    badgeColor: '#F97316',
+    badgeColor: '#FFFFFF',
     layout: 'film_35mm',
     defaultSettings: {
       photoShape: 'rect',
@@ -130,7 +130,7 @@ export const LAYOUT_CATALOG_CARDS: LayoutCardItem[] = [
     subtitle: 'Strip imut dengan 2 foto, cocok untuk pasangan',
     sizeTag: 'Mini Strip (2 Pose)',
     badge: 'CUTE',
-    badgeColor: '#EC4899',
+    badgeColor: '#FFFFFF',
     layout: 'strip_2',
     defaultSettings: {
       photoShape: 'circle',
@@ -149,7 +149,7 @@ export const LAYOUT_CATALOG_CARDS: LayoutCardItem[] = [
     subtitle: 'Desain majalah mode dengan 1 foto utama dan 2 foto pendukung',
     sizeTag: 'Editorial Portrait (3 Pose)',
     badge: 'HOT',
-    badgeColor: '#3B82F6',
+    badgeColor: '#FFFFFF',
     layout: 'editorial',
     defaultSettings: {
       photoShape: 'rect',

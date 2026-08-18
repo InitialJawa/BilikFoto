@@ -220,7 +220,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
             }}
             className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all shrink-0 ${
               activeTab === tab.id
-                ? 'bg-rose-500 text-white shadow-xs'
+                ? 'bg-white text-black shadow-xs'
                 : 'text-zinc-400 hover:text-white hover:bg-white/5'
             }`}
           >
@@ -244,7 +244,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                   Warna & Tekstur Bingkai ({FRAME_SWATCHES.length} Swatch)
                 </h3>
                 {hoveredSwatch && (
-                  <span className="text-[11px] font-semibold text-rose-400 truncate max-w-[180px]">
+                  <span className="text-[11px] font-semibold text-zinc-400 truncate max-w-[180px]">
                     {hoveredSwatch.name}
                   </span>
                 )}
@@ -304,13 +304,13 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                       }}
                       className={`relative aspect-square rounded-full border transition-all hover:scale-110 flex items-center justify-center ${
                         isSelected
-                          ? 'border-rose-500 scale-110 ring-2 ring-rose-500/50 shadow-md z-10'
+                          ? 'border-white scale-110 ring-2 ring-white/50 shadow-md z-10'
                           : 'border-white/40 hover:border-white ring-1 ring-black/40'
                       }`}
                     >
                       {isSelected && (
                         <Check className={`w-3.5 h-3.5 stroke-[3] ${
-                          swatch.colorHex === '#FFFFFF' || swatch.category === 'plaid' ? 'text-rose-600' : 'text-white'
+                          swatch.colorHex === '#FFFFFF' || swatch.category === 'plaid' ? 'text-black' : 'text-white'
                         }`} />
                       )}
                     </button>
@@ -360,7 +360,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                       }}
                       className={`flex flex-col items-center justify-center p-3 rounded-xl border transition-all ${
                         isSelected
-                          ? 'border-rose-500 bg-rose-500/10 text-rose-400 ring-1 ring-rose-500/30'
+                          ? 'border-white bg-white/10 text-zinc-400 ring-1 ring-white/30'
                           : 'border-[#2B2D38] bg-[#1A1B22] hover:border-zinc-500 text-zinc-400 hover:text-white'
                       }`}
                     >
@@ -387,12 +387,12 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                     }}
                     className={`flex items-center gap-3 p-3 rounded-xl border text-left transition-all ${
                       settings.layout === opt.id
-                        ? 'border-rose-500 bg-rose-500/10 text-white ring-1 ring-rose-500/30'
+                        ? 'border-white bg-white/10 text-white ring-1 ring-white/30'
                         : 'border-[#2B2D38] bg-[#1A1B22] text-zinc-400 hover:text-white hover:border-zinc-500'
                     }`}
                   >
                     <div className={`w-8 h-8 rounded flex items-center justify-center font-mono font-bold text-xs shrink-0 ${
-                      settings.layout === opt.id ? 'bg-rose-500 text-white' : 'bg-[#252733] text-rose-400'
+                      settings.layout === opt.id ? 'bg-white text-black' : 'bg-[#252733] text-zinc-400'
                     }`}>
                       {opt.iconLabel}
                     </div>
@@ -400,7 +400,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                       <p className="font-bold text-xs truncate text-white">{opt.name}</p>
                       <p className="text-[10px] text-zinc-400 truncate">{opt.desc}</p>
                     </div>
-                    {settings.layout === opt.id && <Check className="w-4 h-4 text-rose-400 shrink-0" />}
+                    {settings.layout === opt.id && <Check className="w-4 h-4 text-zinc-400 shrink-0" />}
                   </button>
                 ))}
               </div>
@@ -416,7 +416,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
               <div>
                 <div className="flex justify-between text-xs font-medium text-zinc-300 mb-1">
                   <span>Ketebalan Bingkai</span>
-                  <span className="font-mono font-bold text-rose-400">{settings.framePadding}px</span>
+                  <span className="font-mono font-bold text-zinc-400">{settings.framePadding}px</span>
                 </div>
                 <input
                   type="range"
@@ -424,7 +424,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                   max="48"
                   value={settings.framePadding}
                   onChange={(e) => onSettingsChange({ ...settings, framePadding: Number(e.target.value) })}
-                  className="w-full accent-rose-500 bg-[#252733] h-2 rounded-lg cursor-pointer"
+                  className="w-full accent-white bg-[#252733] h-2 rounded-lg cursor-pointer"
                 />
               </div>
 
@@ -432,7 +432,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
               <div>
                 <div className="flex justify-between text-xs font-medium text-zinc-300 mb-1">
                   <span>Jarak Antar Foto</span>
-                  <span className="font-mono font-bold text-rose-400">{settings.photoGap}px</span>
+                  <span className="font-mono font-bold text-zinc-400">{settings.photoGap}px</span>
                 </div>
                 <input
                   type="range"
@@ -440,7 +440,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                   max="32"
                   value={settings.photoGap}
                   onChange={(e) => onSettingsChange({ ...settings, photoGap: Number(e.target.value) })}
-                  className="w-full accent-rose-500 bg-[#252733] h-2 rounded-lg cursor-pointer"
+                  className="w-full accent-white bg-[#252733] h-2 rounded-lg cursor-pointer"
                 />
               </div>
 
@@ -448,7 +448,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
               <div>
                 <div className="flex justify-between text-xs font-medium text-zinc-300 mb-1">
                   <span>Kelengkungan Sudut Foto</span>
-                  <span className="font-mono font-bold text-rose-400">{settings.photoRadius}px</span>
+                  <span className="font-mono font-bold text-zinc-400">{settings.photoRadius}px</span>
                 </div>
                 <input
                   type="range"
@@ -456,7 +456,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                   max="36"
                   value={settings.photoRadius}
                   onChange={(e) => onSettingsChange({ ...settings, photoRadius: Number(e.target.value) })}
-                  className="w-full accent-rose-500 bg-[#252733] h-2 rounded-lg cursor-pointer"
+                  className="w-full accent-white bg-[#252733] h-2 rounded-lg cursor-pointer"
                 />
               </div>
 
@@ -466,7 +466,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                 <button
                   onClick={() => onSettingsChange({ ...settings, photoShadow: !settings.photoShadow })}
                   className={`w-10 h-6 flex items-center rounded-full p-1 transition-colors ${
-                    settings.photoShadow ? 'bg-rose-500' : 'bg-[#2E313E]'
+                    settings.photoShadow ? 'bg-white' : 'bg-[#2E313E]'
                   }`}
                 >
                   <div className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform ${
@@ -489,7 +489,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                 onClick={() => onToolChange('select')}
                 className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
                   activeTool === 'select'
-                    ? 'bg-rose-500 text-white shadow-xs'
+                    ? 'bg-white text-black shadow-xs'
                     : 'text-zinc-400 hover:text-white'
                 }`}
               >
@@ -500,7 +500,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                 onClick={() => onToolChange('doodle')}
                 className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
                   activeTool === 'doodle'
-                    ? 'bg-rose-500 text-white shadow-xs'
+                    ? 'bg-white text-black shadow-xs'
                     : 'text-zinc-400 hover:text-white'
                 }`}
               >
@@ -534,7 +534,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                     <button
                       key={st.id}
                       onClick={() => handleAddSticker(st)}
-                      className="group relative aspect-square bg-[#1A1B22] hover:bg-[#252733] border border-[#2B2D38] hover:border-rose-500 rounded-lg p-2 flex flex-col items-center justify-center transition-all transform active:scale-90"
+                      className="group relative aspect-square bg-[#1A1B22] hover:bg-[#252733] border border-[#2B2D38] hover:border-white rounded-lg p-2 flex flex-col items-center justify-center transition-all transform active:scale-90"
                       title={`Pasang stiker: ${st.label}`}
                     >
                       {st.type === 'emoji' ? (
@@ -549,7 +549,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                 </div>
 
                 {/* Upload Custom Sticker */}
-                <label className="flex items-center justify-center gap-2 w-full p-2.5 bg-[#1A1B22] hover:bg-[#22242E] text-rose-400 text-xs font-semibold rounded-xl border border-dashed border-rose-500/40 cursor-pointer transition-colors whitespace-nowrap shrink-0">
+                <label className="flex items-center justify-center gap-2 w-full p-2.5 bg-[#1A1B22] hover:bg-[#22242E] text-zinc-400 text-xs font-semibold rounded-xl border border-dashed border-white/40 cursor-pointer transition-colors whitespace-nowrap shrink-0">
                   <Upload className="w-4 h-4 shrink-0" />
                   <span>Unggah Stiker Custom (PNG)</span>
                   <input
@@ -564,7 +564,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                 {settings.stickers.length > 0 && (
                   <button
                     onClick={() => onSettingsChange({ ...settings, stickers: [] })}
-                    className="w-full py-1.5 text-xs text-rose-400 hover:text-rose-300 font-semibold transition-colors"
+                    className="w-full py-1.5 text-xs text-zinc-400 hover:text-zinc-300 font-semibold transition-colors"
                   >
                     Hapus Semua Stiker ({settings.stickers.length})
                   </button>
@@ -588,7 +588,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                         onClick={() => onDoodleColorChange(col)}
                         style={{ backgroundColor: col }}
                         className={`w-7 h-7 rounded-full border transition-transform ${
-                          doodleColor === col ? 'scale-125 border-rose-500 ring-2 ring-rose-500/50' : 'border-zinc-600'
+                          doodleColor === col ? 'scale-125 border-white ring-2 ring-white/50' : 'border-zinc-600'
                         }`}
                       />
                     ))}
@@ -605,7 +605,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                 <div>
                   <div className="flex justify-between text-xs font-bold text-zinc-300 mb-1">
                     <span>Ketebalan Kuas</span>
-                    <span className="font-mono text-rose-400">{doodleWidth}px</span>
+                    <span className="font-mono text-zinc-400">{doodleWidth}px</span>
                   </div>
                   <input
                     type="range"
@@ -613,14 +613,14 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                     max="18"
                     value={doodleWidth}
                     onChange={(e) => onDoodleWidthChange(Number(e.target.value))}
-                    className="w-full accent-rose-500 bg-[#252733] h-2 rounded-lg cursor-pointer"
+                    className="w-full accent-white bg-[#252733] h-2 rounded-lg cursor-pointer"
                   />
                 </div>
 
                 {settings.doodles.length > 0 && (
                   <button
                     onClick={() => onSettingsChange({ ...settings, doodles: [] })}
-                    className="w-full py-1.5 text-xs text-rose-400 hover:text-rose-300 font-semibold transition-colors"
+                    className="w-full py-1.5 text-xs text-zinc-400 hover:text-zinc-300 font-semibold transition-colors"
                   >
                     Hapus Semua Coretan ({settings.doodles.length})
                   </button>
@@ -648,13 +648,13 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                     }}
                     className={`p-3 rounded-xl border text-left transition-all ${
                       settings.filter === f.id
-                        ? 'border-rose-500 bg-rose-500/10 text-white ring-1 ring-rose-500/30'
+                        ? 'border-white bg-white/10 text-white ring-1 ring-white/30'
                         : 'border-[#2B2D38] bg-[#1A1B22] text-zinc-300 hover:border-zinc-500'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-bold text-xs truncate text-white">{f.name}</span>
-                      {settings.filter === f.id && <Check className="w-3.5 h-3.5 text-rose-400" />}
+                      {settings.filter === f.id && <Check className="w-3.5 h-3.5 text-zinc-400" />}
                     </div>
                     <span className="text-[10px] text-zinc-400 block truncate">{f.tag}</span>
                   </button>
@@ -667,7 +667,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
               <div className="border-t border-[#23252E] pt-4">
                 <div className="flex justify-between text-xs font-bold text-zinc-300 mb-1.5">
                   <span>Intensitas Filter</span>
-                  <span className="font-mono text-rose-400">{settings.filterIntensity}%</span>
+                  <span className="font-mono text-zinc-400">{settings.filterIntensity}%</span>
                 </div>
                 <input
                   type="range"
@@ -675,7 +675,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                   max="100"
                   value={settings.filterIntensity}
                   onChange={(e) => onSettingsChange({ ...settings, filterIntensity: Number(e.target.value) })}
-                  className="w-full accent-rose-500 bg-[#252733] h-2 rounded-lg cursor-pointer"
+                  className="w-full accent-white bg-[#252733] h-2 rounded-lg cursor-pointer"
                 />
               </div>
             )}
@@ -713,7 +713,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                       }}
                       className={`py-2 px-2 rounded-xl border font-bold text-xs transition-all ${
                         isSelected
-                          ? 'border-rose-500 bg-rose-500/10 text-rose-400 ring-1 ring-rose-500/30'
+                          ? 'border-white bg-white/10 text-zinc-400 ring-1 ring-white/30'
                           : 'border-[#2B2D38] bg-[#1A1B22] text-zinc-400 hover:border-zinc-500 hover:text-white'
                       }`}
                     >
@@ -734,7 +734,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                 <button
                   onClick={() => onSettingsChange({ ...settings, showHeader: !settings.showHeader })}
                   className={`w-9 h-5 flex items-center rounded-full p-0.5 transition-colors ${
-                    settings.showHeader ? 'bg-rose-500' : 'bg-[#2E313E]'
+                    settings.showHeader ? 'bg-white' : 'bg-[#2E313E]'
                   }`}
                 >
                   <div className={`bg-white w-4 h-4 rounded-full shadow transform transition-transform ${
@@ -781,7 +781,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                 <button
                   onClick={() => onSettingsChange({ ...settings, showFooter: !settings.showFooter })}
                   className={`w-9 h-5 flex items-center rounded-full p-0.5 transition-colors ${
-                    settings.showFooter ? 'bg-rose-500' : 'bg-[#2E313E]'
+                    settings.showFooter ? 'bg-white' : 'bg-[#2E313E]'
                   }`}
                 >
                   <div className={`bg-white w-4 h-4 rounded-full shadow transform transition-transform ${
@@ -821,7 +821,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                   type="checkbox"
                   checked={settings.showDate}
                   onChange={(e) => onSettingsChange({ ...settings, showDate: e.target.checked })}
-                  className="accent-rose-500 w-4 h-4 rounded"
+                  className="accent-white w-4 h-4 rounded"
                 />
               </label>
 
@@ -831,7 +831,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                   type="checkbox"
                   checked={settings.showTime}
                   onChange={(e) => onSettingsChange({ ...settings, showTime: e.target.checked })}
-                  className="accent-rose-500 w-4 h-4 rounded"
+                  className="accent-white w-4 h-4 rounded"
                 />
               </label>
 
@@ -841,7 +841,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                   type="checkbox"
                   checked={settings.showBarcode}
                   onChange={(e) => onSettingsChange({ ...settings, showBarcode: e.target.checked })}
-                  className="accent-rose-500 w-4 h-4 rounded"
+                  className="accent-white w-4 h-4 rounded"
                 />
               </label>
 
@@ -851,7 +851,7 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                   type="checkbox"
                   checked={settings.showQrCode}
                   onChange={(e) => onSettingsChange({ ...settings, showQrCode: e.target.checked })}
-                  className="accent-rose-500 w-4 h-4 rounded"
+                  className="accent-white w-4 h-4 rounded"
                 />
               </label>
             </div>
@@ -879,12 +879,12 @@ export const CustomizerSidebar: React.FC<CustomizerSidebarProps> = ({
                     <span style={{ color: tpl.textColor }}>BF</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-bold text-xs text-white group-hover:text-rose-400 transition-colors">
+                    <p className="font-bold text-xs text-white group-hover:text-zinc-400 transition-colors">
                       {tpl.name}
                     </p>
                     <p className="text-[10px] text-zinc-400 truncate">{tpl.subtitle}</p>
                   </div>
-                  <Wand2 className="w-4 h-4 text-zinc-500 group-hover:text-rose-400 transition-colors shrink-0" />
+                  <Wand2 className="w-4 h-4 text-zinc-500 group-hover:text-zinc-400 transition-colors shrink-0" />
                 </button>
               ))}
             </div>

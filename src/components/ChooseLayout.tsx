@@ -121,7 +121,7 @@ export const ChooseLayout: React.FC<ChooseLayoutProps> = ({
           aria-label="Layout Sebelumnya"
           className="absolute -left-2 sm:-left-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-[#1D1E26] hover:bg-[#282A36] text-white rounded-full shadow-lg border border-[#2E313D] flex items-center justify-center transition-all hover:scale-105 active:scale-95"
         >
-          <ChevronLeft className="w-5 h-5 text-rose-400" />
+          <ChevronLeft className="w-5 h-5 text-zinc-400" />
         </button>
 
         {/* Layout Cards Grid */}
@@ -143,8 +143,8 @@ export const ChooseLayout: React.FC<ChooseLayoutProps> = ({
                 {/* Badge Top Left */}
                 {card.badge && (
                   <div 
-                    style={{ backgroundColor: card.badgeColor || '#E11D48' }}
-                    className="absolute -top-2.5 left-4 px-2 py-0.5 rounded text-[9px] font-bold text-white uppercase tracking-wider shadow-sm z-10"
+                    style={{ backgroundColor: card.badgeColor || '#FFFFFF' }}
+                    className="absolute -top-2.5 left-4 px-2 py-0.5 rounded text-[9px] font-bold text-black uppercase tracking-wider shadow-sm z-10"
                   >
                     {card.badge}
                   </div>
@@ -301,7 +301,7 @@ export const ChooseLayout: React.FC<ChooseLayoutProps> = ({
           aria-label="Layout Berikutnya"
           className="absolute -right-2 sm:-right-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-[#1D1E26] hover:bg-[#282A36] text-white rounded-full shadow-lg border border-[#2E313D] flex items-center justify-center transition-all hover:scale-105 active:scale-95"
         >
-          <ChevronRight className="w-5 h-5 text-rose-400" />
+          <ChevronRight className="w-5 h-5 text-zinc-400" />
         </button>
 
       </div>

@@ -67,7 +67,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-[100dvh] bg-[#0F1012] text-[#F3F4F6] flex flex-col font-sans selection:bg-rose-500 selection:text-white antialiased pb-24">
+    <div className="min-h-[100dvh] bg-[#0F1012] text-[#F3F4F6] flex flex-col font-sans selection:bg-white selection:text-white antialiased pb-24">
       
       {/* Top Bar Header */}
       <Header

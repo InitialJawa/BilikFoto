@@ -187,7 +187,7 @@ export const PhotoStripCanvas: React.FC<PhotoStripCanvasProps> = ({
             onClick={() => onToolChange('select')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all whitespace-nowrap shrink-0 ${
               activeTool === 'select'
-                ? 'bg-rose-500 text-white shadow-xs'
+                ? 'bg-white text-black shadow-xs'
                 : 'text-zinc-400 hover:text-white'
             }`}
           >
@@ -199,7 +199,7 @@ export const PhotoStripCanvas: React.FC<PhotoStripCanvasProps> = ({
             onClick={() => onToolChange('doodle')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all whitespace-nowrap shrink-0 ${
               activeTool === 'doodle'
-                ? 'bg-rose-500 text-white shadow-xs'
+                ? 'bg-white text-black shadow-xs'
                 : 'text-zinc-400 hover:text-white'
             }`}
           >
@@ -213,7 +213,7 @@ export const PhotoStripCanvas: React.FC<PhotoStripCanvasProps> = ({
           {settings.doodles.length > 0 && (
             <button
               onClick={undoLastDoodle}
-              className="flex items-center gap-1 px-2.5 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 rounded-xl text-xs font-semibold border border-rose-500/20 transition-all whitespace-nowrap shrink-0"
+              className="flex items-center gap-1 px-2.5 py-1.5 bg-white/10 hover:bg-white/20 text-zinc-400 rounded-xl text-xs font-semibold border border-white/20 transition-all whitespace-nowrap shrink-0"
               title="Batalkan Coretan Terakhir"
             >
               <Undo className="w-3.5 h-3.5 shrink-0" />
@@ -229,7 +229,7 @@ export const PhotoStripCanvas: React.FC<PhotoStripCanvasProps> = ({
             >
               <ZoomOut className="w-3.5 h-3.5" />
             </button>
-            <span className="text-[11px] font-mono font-bold text-rose-400 px-1">
+            <span className="text-[11px] font-mono font-bold text-zinc-400 px-1">
               {Math.round(scaleFactor * 100)}%
             </span>
             <button
@@ -284,7 +284,7 @@ export const PhotoStripCanvas: React.FC<PhotoStripCanvasProps> = ({
                 top: `${selectedSticker.y}%`,
                 transform: `translate(-50%, -50%) rotate(${selectedSticker.rotation}deg)`,
               }}
-              className="absolute pointer-events-auto border-2 border-rose-500 border-dashed rounded-xl p-3 z-50 flex items-center justify-center group"
+              className="absolute pointer-events-auto border-2 border-white border-dashed rounded-xl p-3 z-50 flex items-center justify-center group"
             >
               {/* Quick Actions Floating Pill */}
               <div className="absolute -top-10 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-[#181920] text-white px-2 py-1 rounded-xl border border-[#2E313E] shadow-2xl whitespace-nowrap z-50">
@@ -312,7 +312,7 @@ export const PhotoStripCanvas: React.FC<PhotoStripCanvasProps> = ({
                 <button
                   onClick={deleteSelectedSticker}
                   title="Hapus Stiker"
-                  className="p-1 hover:bg-rose-500/20 text-rose-400 rounded text-xs"
+                  className="p-1 hover:bg-white/20 text-zinc-400 rounded text-xs"
                 >
                   <Trash2 className="w-3 h-3" />
                 </button>

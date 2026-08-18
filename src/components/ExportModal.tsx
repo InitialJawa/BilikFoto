@@ -158,7 +158,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({
                 onClick={() => setIsDualStrip(false)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap shrink-0 ${
                   !isDualStrip
-                    ? 'bg-rose-500 text-white shadow-xs'
+                    ? 'bg-white text-black shadow-xs'
                     : 'text-zinc-400 hover:text-white'
                 }`}
               >
@@ -168,7 +168,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({
                 onClick={() => setIsDualStrip(true)}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap shrink-0 ${
                   isDualStrip
-                    ? 'bg-rose-500 text-white shadow-xs'
+                    ? 'bg-white text-black shadow-xs'
                     : 'text-zinc-400 hover:text-white'
                 }`}
               >
@@ -200,13 +200,13 @@ export const ExportModal: React.FC<ExportModalProps> = ({
             {/* PNG Download Button */}
             <button
               onClick={() => handleDownload('png')}
-              className="w-full flex items-center justify-between p-3.5 rounded-xl bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs shadow-lg shadow-rose-500/20 transition-all active:scale-98 whitespace-nowrap shrink-0"
+              className="w-full flex items-center justify-between p-3.5 rounded-xl bg-white hover:bg-zinc-200 text-white font-bold text-xs shadow-lg shadow-white/10 transition-all active:scale-98 whitespace-nowrap shrink-0"
             >
               <div className="flex items-center gap-3">
                 <Download className="w-4 h-4 shrink-0" />
                 <div className="text-left">
                   <p className="font-bold text-white">Download Format PNG (HD)</p>
-                  <p className="text-[10px] font-normal text-rose-100">Kualitas cetak tajam terbaik (Recommended)</p>
+                  <p className="text-[10px] font-normal text-zinc-400">Kualitas cetak tajam terbaik (Recommended)</p>
                 </div>
               </div>
               <span className="text-xs px-2 py-0.5 bg-black/20 rounded font-mono shrink-0">PNG</span>
@@ -266,7 +266,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="font-display font-bold text-sm text-white flex items-center gap-2">
-                  <Film className="w-4 h-4 text-rose-400 shrink-0" />
+                  <Film className="w-4 h-4 text-zinc-400 shrink-0" />
                   <span>Motion Strip (Live Photobooth)</span>
                 </h3>
                 <p className="text-xs text-zinc-400">
@@ -288,7 +288,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({
                 <a
                   href={gifUrl}
                   download="BilikFoto-Motion.webm"
-                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-rose-500 hover:bg-rose-600 text-white rounded-xl text-xs font-bold shadow-md transition-colors whitespace-nowrap shrink-0"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-white hover:bg-zinc-200 text-white rounded-xl text-xs font-bold shadow-md transition-colors whitespace-nowrap shrink-0"
                 >
                   <Download className="w-4 h-4 shrink-0" />
                   <span>Download Video Motion (.webm)</span>
@@ -302,12 +302,12 @@ export const ExportModal: React.FC<ExportModalProps> = ({
               >
                 {isGeneratingGif ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin text-rose-400 shrink-0" />
+                    <Loader2 className="w-4 h-4 animate-spin text-zinc-400 shrink-0" />
                     <span>Sedang Membuat Animasi ({gifProgress}%)...</span>
                   </>
                 ) : (
                   <>
-                    <Film className="w-4 h-4 text-rose-400 shrink-0" />
+                    <Film className="w-4 h-4 text-zinc-400 shrink-0" />
                     <span>Generate Motion Strip Sekarang</span>
                   </>
                 )}
