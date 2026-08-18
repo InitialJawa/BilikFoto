@@ -15,6 +15,7 @@ import { ExportModal } from './components/ExportModal';
 import { Camera, Sliders, Download, Layout } from 'lucide-react';
 import { setAudioMuted, getAudioMuted, playStickerPopSound, playClickSound } from './utils/audio';
 import { AnimatePresence, motion } from 'motion/react';
+import { SEOContent } from './components/SEOContent';
 
 export default function App() {
   const [currentStep, setCurrentStep] = useState<AppStep>('layouts');
@@ -69,6 +70,9 @@ export default function App() {
   return (
     <div className="min-h-[100dvh] bg-[#0F1012] text-[#F3F4F6] flex flex-col font-sans selection:bg-white selection:text-white antialiased pb-24">
       
+      {/* SEO Content — visible untuk crawler, hidden untuk user */}
+      <SEOContent />
+
       {/* Top Bar Header */}
       <Header
         currentStep={currentStep}
